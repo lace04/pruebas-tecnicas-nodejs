@@ -1,0 +1,36 @@
+npm init
+
+npm install typescript ts-node-dev @types/express -D
+
+add script:
+    "dev": "ts-node-dev --respawn ./src/index.ts"
+    "build": "tsc"
+    "start": "node ./dist/index.js"
+
+Server modules:
+npm install express morgan cors 
+
+types:
+npm install @types/express @types/morgan @types/cors -D
+
+//postgres from typeorm read docs
+npm install typeorm --save
+npm install reflect-metadata --save
+npm install @types/node --save-dev
+npm install pg --save
+
+//postgres docker port 5436
+docker run --name pruebanode -e POSTGRES_PASSWORD=mysecretpassword -p 5436:5432 -d postgres
+
+docker exec -it pruebanode bash
+
+psql -U postgres --password
+mysecretpassword
+
+npx tsc --init
+tsconfig.json modify
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
